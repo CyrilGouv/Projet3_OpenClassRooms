@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vélov'v | Vivez Lyon autrement</title>
+    
+    <!-- Normalize Cdn Reset Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <!-- Intro -->
+    <header id="intro">
+        <div class="container">
+                <div class="intro-logo">
+                    <div class="intro-logo-icon">
+                        <i class="fa fa-bicycle" aria-hidden="true"></i>
+                    </div>
+                    <h1>
+                        Vélov'v
+                        <span class="intro-logo-slogan">Réserver votre vélo en ligne</span>
+                    </h1>
+                </div>
+
+            <div class="intro-content zoomIn">
+                <div class="intro-content-welcome">
+                    <p class="welcome-l1">Vivez <span>Lyon</span></p>
+                    <p class="welcome-l2">Autrement</p>
+                    <a href="#diapo" class="btn welcome-cta">En savoir plus <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <img class="intro-bike bike-1" src="img/bike-map-markers.png" alt="">
+        <img class="intro-bike bike-2" src="img/bike-map-markers.png" alt="">
+        <img class="intro-bike bike-3" src="img/bike-map-markers.png" alt="">
+        <img class="intro-bike bike-4" src="img/bike-map-markers.png" alt="">
+    </header>
+
+
+    <!-- Diaporama -->
+    <section id="diapo">
+        <ul class="diapo-content">
+            <h2>Comment ça marche ?</h2>
+
+            <li class="diapo-content-slide slide-1 fade-in">
+                <div class="slide-wrapper">
+                    <div class="slide-square-image slide-1-image">1</div>
+                    <p class="slide-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus nulla dolorem tempore exercitationem perferendis possimus nesciunt eaque autem maiores, fugiat atque qui error tenetur sint temporibus provident, animi fugit accusantium.
+                    </p>
+                </div>
+            </li>
+            <li class="diapo-content-slide slide-2 fade-in">
+                <div class="slide-wrapper">
+                    <div class="slide-round-image slide-2-image">2</div>
+                    <p class="slide-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus nulla dolorem tempore exercitationem perferendis possimus nesciunt eaque autem maiores, fugiat atque qui error tenetur sint temporibus provident, animi fugit accusantium.
+                    </p>
+                </div>
+            </li>
+            <li class="diapo-content-slide slide-3 fade-in">
+                <div class="slide-wrapper">
+                    <div class="slide-square-image slide-3-image">3</div>
+                    <p class="slide-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus nulla dolorem tempore exercitationem perferendis possimus nesciunt eaque autem maiores, fugiat atque qui error tenetur sint temporibus provident, animi fugit accusantium.
+                    </p>
+                </div>
+            </li>
+            <li class="diapo-content-slide slide-4 fade-in">
+                <div class="slide-wrapper">
+                    <div class="slide-round-image slide-4-image">4</div>
+                    <p class="slide-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus nulla dolorem tempore exercitationem perferendis possimus nesciunt eaque autem maiores, fugiat atque qui error tenetur sint temporibus provident, animi fugit accusantium.
+                    </p>
+                </div>
+            </li>
+            <li class="diapo-content-slide slide-5 fade-in">
+                <div class="slide-wrapper">
+                    <div class="slide-square-image slide-5-image">5</div>
+                    <p class="slide-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus nulla dolorem tempore exercitationem perferendis possimus nesciunt eaque autem maiores, fugiat atque qui error tenetur sint temporibus provident, animi fugit accusantium.
+                    </p>
+                </div>
+            </li>
+        
+            
+            <a class="diapo-content-controls control-left" href="#"><i class="fa fa-angle-left"></i></a>
+            <a class="diapo-content-controls control-right" href="#"><i class="fa fa-angle-right"></i></a>
+            <a class="diapo-content-controls control-bottom" href="#rent"><i class="fa fa-angle-down"></i></a>
+            
+        </ul>
+    </section>
+
+
+    <!-- Réservation -->
+    <section id="rent">
+        <h2>Réservation en ligne</h2>
+
+        
+        <!-- Map Box with Infos -->
+        <div class="rent-map">
+            <!-- Google Maps -->
+            <div id="carte"></div>
+
+            <div class="rent-map-infos">
+                <h3>Informations sur la station</h3>
+
+                <div class="infos-content">
+                    <p>Veuillez selectionner une station...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Box Canvas -->
+        <div class="canvas">
+            <div class="canvas-infos">
+                <h2>Signature</h2>
+                <p>Merci de signer dans le cadre ci-dessous pour que la réservation soit bien établie</p>
+            </div>
+        
+            <canvas class="canvas-sign"></canvas>
+            <div class="canvas-cta">
+                <button class="canvas-cta-accept" disabled>Je réserve</button>
+                <button class="canvas-cta-cancel">J'annule</button>
+            </div>
+        </div>
+        
+
+        <div class="rent-confirmation">
+            <p>Vous avez actuellement aucune réservation d'enregistrer.</p>
+        </div>
+
+        
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+    </footer>
+    
+    <!-- jQuery -->
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl5rd08j7iXLhYA2KVVQiT_O5lJoPB1Og"></script>
+    
+    <!-- MarkerClusterer Library -->
+    <script src="js/lib/markerclusterer.js"></script>
+    
+    <!-- Divers Animation -->
+    <script src="js/animation.js"></script>
+    
+    <!-- Classes -->
+    <script src="js/class/Slider.js"></script>
+    <script src="js/class/Map.js"></script>
+    <script src="js/class/Velov.js"></script>
+    <script src="js/class/UI.js"></script>
+    <script src="js/class/Storage.js"></script>
+
+    <!-- Main Js -->
+    <script src="js/app.js"></script>
+</body>
+</html>

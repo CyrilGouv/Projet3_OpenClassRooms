@@ -1,0 +1,218 @@
+#intro {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, .65) url(../img/lyon-skyline.jpg) no-repeat center center;
+    background-size: cover;
+    background-blend-mode: darken;
+
+
+    .intro-logo {
+        display: flex;
+        align-items: center;
+
+        .intro-logo-icon {
+            width: 4rem;
+            height: 4rem;
+            
+            border: 2px solid $white;
+            border-radius: 50%;
+            
+            text-align: center;
+            line-height: 4rem;
+
+            .fa {
+                font-size: 2rem;
+                color: $lightGreen;
+            }
+        }
+
+        h1 {
+            margin-left: 1.5rem;
+
+            color: $lightGreen;
+
+            .intro-logo-slogan {
+                display: block;
+
+                font-size: 0.85rem;
+                font-weight: 300;
+                color: $pale;
+            }
+        }
+    }
+
+
+    .intro-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+
+        .intro-content-welcome {
+            margin-top: 8rem;
+            text-align: center;
+
+            p {
+                font-size: 6rem;
+                color: $white;
+                text-transform: uppercase;
+                font-weight: 300;
+                line-height: .25;
+                
+
+                span {
+                    color: $lightGreen;
+                    font-weight: 700;
+                }
+            }
+
+            .welcome-l2 {
+                font-weight: 700;
+            }
+
+            .welcome-cta {
+                display: inline-block;
+                margin-top: 1.5rem;
+                padding: 0.85rem 1.25rem;
+
+                border: 2px solid $pale;
+                border-radius: 2px;
+
+                text-transform: uppercase;
+                text-decoration: none;
+                color: $pale;
+                font-weight: 700;
+
+                transition: .3s ease-in-out;
+
+                .fa {
+                    transform: translateX(-20px);
+                    visibility: hidden;
+                    opacity: 0;
+                    font-size: 1.35rem;
+
+                    transition: all .25s ease-in-out;
+                }
+
+                &:hover {
+                    border: 2px solid $pale;
+                    color: $lightGreen;
+                    background-color: $pale;
+
+                    .fa {
+                        transform: translateX(0px);
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .intro-bike {
+        position: absolute;
+        z-index: 1;
+        width: 6rem;
+        height: auto;
+
+        transform: translateY(-300%);
+        visibility: hidden;
+        opacity: 0;
+
+        transition: all .3s ease-in-out;
+    }
+
+    .bike-1, .bike-3 {
+        width: 4rem;
+        height: auto;
+    }
+
+    .bike-1 {
+        top: 30%;
+        left: 8%;
+    }
+    .bike-2 {
+        top: 70%;
+        left: 20%;
+    }
+    .bike-3 {
+        top: 35%;
+        right: 10%;
+    }
+    .bike-4 {
+        top: 75%;
+        right: 15%;
+    }
+}
+
+
+/* ----------------------------------------------------- */
+/* Responsive */
+
+// iPad Pro Format
+@media (max-width: 1024px) {
+    .intro-content-welcome {
+        margin-top: 10rem!important;
+
+        p {
+            font-size: 4rem!important;
+        }
+    }
+
+    .welcome-cta {
+        margin-top: 0!important;
+        padding: 0.65rem 1.05rem!important;
+
+        font-size: 0.9rem;
+    }
+}
+
+// iPad Format
+@media (max-width: 768px) {
+    .intro-content-welcome {
+
+        p {
+            font-size: 3.5rem!important;
+        }
+    }
+
+    .welcome-cta {
+        padding: 0.65rem 1.05rem!important;
+
+        font-size: 0.85rem;
+    }
+
+    .bike-2 {
+        top: 70%!important;
+        left: 15%!important;
+    }
+}
+
+// Smartphone
+@media (max-width: 450px) {
+    .intro-content-welcome {
+
+        p {
+            font-size: 3rem!important;
+        }
+    }
+
+    .welcome-cta {
+        padding: 0.65rem 1.05rem!important;
+
+        font-size: 0.75rem;
+    }
+
+    .bike-1 {
+        top: 28%!important;
+        left: 8%!important;
+    }
+
+    .bike-3 {
+        top: 30%!important;
+        right: 5%!important;
+    }
+}

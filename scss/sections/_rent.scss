@@ -1,0 +1,108 @@
+#rent {
+    padding: 4rem 0;
+    height: 100vh; // A enlever par la suite
+    background-color: $lightGreen;
+
+
+    h2 {
+        position: relative;
+
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $pale;
+        text-transform: uppercase;
+        text-align: center;
+
+        &:after {
+            position: absolute;
+            content: "";
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background-color: $pale;
+            width: 5rem;
+            height: 3px;
+        }
+    }
+
+
+    .rent-map {
+        margin-top: 6rem;
+        display: flex;
+        justify-content: center;
+
+        // Carte Google
+        #carte {
+            width: 60%;
+            height: 400px;
+            margin-right: 1rem;
+        }
+
+        .rent-map-infos {
+            background-color: $pale;
+            padding: 0 1rem;
+            max-width: 30%;
+            height: 400px;
+
+            h3 {
+                font-size: 1.2rem;
+                color: $darkGreen;
+                text-align: center;
+            }
+
+            .infos-content {
+                color: $blue;
+                font-weight: 300;
+                text-align: center;
+
+                ul {
+                    margin-top: 2rem;
+                    margin-bottom: 3rem;
+                    text-align: left;
+
+                    li {
+                        margin-bottom: 1rem;
+
+                        span {
+                            font-weight: 700;
+                        }
+                    }
+                }
+
+                .infos-content-reservation {
+                    padding: .5rem 1.2rem;
+                    background-color: $mediumGreen;
+                    border: 2px solid $mediumGreen;
+
+                    color: $white;
+                    font-weight: 700;
+                    text-align: center;
+                    text-transform: uppercase;
+                    text-decoration: none;
+
+                    transition: .3s;
+
+                    &:hover {
+                        background-color: $white;
+                        border: 2px solid $mediumGreen;
+
+                        color: $mediumGreen;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .rent-confirmation {
+        text-align: center;
+        
+        p {
+            font-size: 1.5rem;
+            color: $blue;
+            font-weight: 700;
+        }
+    }
+
+}
