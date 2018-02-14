@@ -19,4 +19,24 @@ $(function() {
         }, 500);
     })
     
+
+    $('.control-bottom').click(function(e) {
+        e.preventDefault();
+
+        if ($(window).width() <= 768) {
+            const target = document.querySelector('#rent');
+            const targetTop = document.body.scrollHeight - target.scrollHeight;
+
+            $('html, body').animate({
+                scrollTop: targetTop
+            }, 500);
+        } else {
+            $('html, body').animate({
+                scrollTop: document.body.scrollHeight
+            }, 500);
+        }
+
+        
+    });
+
 });

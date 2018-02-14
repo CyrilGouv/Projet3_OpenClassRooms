@@ -20,6 +20,7 @@ const infosContent = document.querySelector('.infos-content');
 const signature = document.querySelector('.canvas-sign');
 const cancelSignature = document.querySelector('.canvas-cta-cancel');
 const acceptSignature = document.querySelector('.canvas-cta-accept');
+const rentConfirm = document.querySelector('.rent-confirmation');
 
 
 /* ---> EVENTS <--- */
@@ -42,6 +43,9 @@ cancelSignature.addEventListener('click', ui.closeCanvas);
 
 // Gère la réservation
 acceptSignature.addEventListener('click', confirmRent);
+
+// Gère l'annulation de la réservation
+rentConfirm.addEventListener('click', (e) => ui.cancelRent(e));
 
 
 

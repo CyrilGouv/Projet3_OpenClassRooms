@@ -24,7 +24,7 @@
     }
 
     .canvas-sign {
-        width: 60%;
+        width: 70%;
         height: 50%;
 
         background-color: $white;
@@ -68,4 +68,40 @@
     .canvas-cta-accept {
         margin-right: 1rem;
     }
+}
+
+
+
+/* ---> RESPONSIVE <--- */
+
+@media (max-width: 1024px) {
+    .canvas {
+        right: 5%;
+        left: 5%;
+
+        .canvas-infos {
+            h2 {
+                font-size: 1.25rem!important;
+            }
+
+            p {
+                font-size: 0.95rem!important;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .canvas-infos {
+
+        h2 {
+            font-size: 1.15rem!important;
+        }
+    }
+
+    .canvas-cta-accept,
+    .canvas-cta-cancel {
+        font-size: .85rem!important;
+    }
+
 }

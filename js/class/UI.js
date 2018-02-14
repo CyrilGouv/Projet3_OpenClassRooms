@@ -67,6 +67,8 @@ class UI {
                 Nous sommes désolés mais aucun vélo n'est disponible actuellement à cette station.
                 </p>
             `;
+
+            this.flashMessage("Désolé, aucun vélo n'est disponible actuellement à cette station", 'error');
         }
     }
 
@@ -150,6 +152,10 @@ class UI {
 
     // Gère la réservation
     acceptSign() {
+        this.flashMessage('Merci, nous avons bien pris en compte la réservation de votre velov!', 'success')
+
+        // On lance le compte à rebours
+        this.timeUp = 0;
         this.countDown();
 
         // On enregistre les infos dans le Session Storage
@@ -194,5 +200,57 @@ class UI {
             }
 
         }, 1000);
+    }
+
+
+    // Gère l'ajout d'un message flash
+    flashMessage(msg, className) {
+        // Permet de ne pas que plusieurs message flash soit ajoutés à la page
+        this.clearFlashMessage();
+
+        // On crée l'élément
+        const div = document.createElement('div');
+        div.classList.add('message-flash', className);
+        div.appendChild(document.createTextNode(msg));
+
+        // On récupère les élements dans des vars
+        const rentConfirm = document.querySelector('.rent-confirmation');
+        const rent = document.getElementById('rent');
+
+        // On insère dans le DOM
+        rent.insertBefore(div, rentConfirm);
+
+        setTimeout(() => {
+            this.clearFlashMessage();
+        }, 3000);
+        
+    }
+
+    // Permet de supprimer les flash messages 
+    clearFlashMessage() {
+        const currentAlert = document.querySelector('.message-flash');
+
+        if (currentAlert) {
+            currentAlert.remove();
+        }
+    }
+
+
+    // Gère l'annulation de la réservation
+    cancelRent(e) {
+        e.preventDefault();
+
+        if (e.target.classList.contains('cancelBike')) {
+            this.flashMessage('Votre réservation a bien été annulée!', 'success');
+
+            document.querySelector('.rent-confirmation').innerHTML = `
+                <p>Vous n'avez aucune réservation d'enregistrer actuellement.</p>
+            `;
+
+            // On Supprime les données enregistrer dans le Session Storage
+            storage.removeData();
+
+            this.timeUp = 0;
+        }
     }
 }

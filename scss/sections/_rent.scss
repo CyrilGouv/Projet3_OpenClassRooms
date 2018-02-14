@@ -1,6 +1,6 @@
 #rent {
-    padding: 4rem 0;
-    height: 100vh; // A enlever par la suite
+    padding: 4rem 0 0 0;
+    height: 100vh;
     background-color: $lightGreen;
 
 
@@ -84,10 +84,10 @@
                     transition: .3s;
 
                     &:hover {
-                        background-color: $white;
-                        border: 2px solid $mediumGreen;
+                        background-color: $darkGreen;
+                        border: 2px solid $darkGreen;
 
-                        color: $mediumGreen;
+                        color: $white;
                     }
                 }
             }
@@ -105,4 +105,89 @@
         }
     }
 
+}
+
+
+
+/* ---> RESPONSIVE <--- */
+
+@media (max-width: 1024px) {
+    #rent {
+        padding: 2rem 0 0 0;
+    }
+
+    .rent-map {
+        flex-direction: column;
+        margin-top: 4rem!important;
+        
+        #carte {
+            width: 100%!important;
+            height: 300px!important;
+            margin-right: 1rem;
+        }
+
+        .rent-map-infos {
+            min-width: 100%!important;
+            height: auto!important;
+        }
+    
+        .infos-content {
+            padding-bottom: 2rem;
+
+            ul {
+                text-align: center!important;
+                margin-bottom: 1.5rem!important;
+                margin-top: 1rem!important;
+
+                li {
+                    font-size: 1rem;
+                    margin-bottom: 0.5rem!important;
+                }
+            }
+
+            .infos-content-reservation {
+                font-size: 0.95rem;
+            }
+        }
+    
+    }
+}
+
+@media (max-width: 768px) {
+    #rent {
+        padding: 1rem 0 0 0!important;
+        height: calc(100vh + 150px);
+
+        h2 {
+            font-size: 1.3em!important;
+        }
+
+        h3 {
+            font-size: 1.1rem!important;
+        }
+
+        .infos-content {
+            p {
+                font-size: .85rem!important;
+            }
+        }
+
+        .rent-confirmation {
+            p {
+                font-size: 1.1rem!important;
+            }
+        }
+
+        ul {
+
+            li {
+                font-size: 0.85rem!important;
+                margin-bottom: 0;
+            }
+        }
+
+        .infos-content-reservation {
+            font-size: 0.85rem!important;
+        }
+    }
 }

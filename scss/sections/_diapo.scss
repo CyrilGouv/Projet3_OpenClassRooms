@@ -147,3 +147,52 @@
         
     }
 }
+
+
+/* ---> RESPONSIVE <--- */
+
+@media (max-width: 1024px) {
+    #diapo {
+        height: calc(100vh + 150px);
+
+        h2 {
+            font-size: 1.1rem!important;
+        }
+    }
+
+    .slide-wrapper {
+        flex-direction: column;
+        padding-left: 1.5rem!important;
+
+        .slide-text {
+            margin-top: 2rem;
+            width: 70%!important;
+
+            
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1rem!important;
+    }
+
+    .slide-square-image {
+        width: 80%!important;
+        height: 300px;
+    }
+
+    .slide-round-image {
+        width: 300px!important;
+        height: 300px!important;
+    }
+
+    .slide-text {
+        font-size: 1.1rem!important;
+    }
+
+    .diapo-content-controls {
+        font-size: 2rem!important;
+    }
+}
