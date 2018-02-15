@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', loadData);
 infosContent.addEventListener('click', rentBike);
 
 // Gère les events du canvas
+// Mouse
 signature.addEventListener('mousedown', (e) => {
     ui.isDrawing = true;
     [ui.lastX, ui.lastY] = [e.offsetX, e.offsetY];
@@ -37,6 +38,18 @@ signature.addEventListener('mousedown', (e) => {
 signature.addEventListener('mousemove', (e) => ui.drawSign(e));
 signature.addEventListener('mouseup', () => ui.isDrawing = false);
 signature.addEventListener('mouseout', () => ui.isDrawing = false);
+// Touch
+signature.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+
+    ui.isDrawing = true;
+    let touches = e.touches[0];
+    [ui.lastX, ui.lastY] = [touches.clientX - touches.target.offsetLeft, touches.clientY - touches.target.offsetTop];
+    
+})
+signature.addEventListener('touchmove', (e) => ui.drawSign(e));
+signature.addEventListener('touchend', () => ui.isDrawing = false);
+signature.addEventListener('touchleave', () => ui.isDrawing = false);
 
 // Gère l'annulation au moment de la signature
 cancelSignature.addEventListener('click', ui.closeCanvas);
@@ -54,8 +67,16 @@ function loadData() {
     velov.getData()
         .then(data => {
             data.forEach(station => {
-                // Ajoute un Marker pour chaque station
-                map.addMarkers(station.position);
+                // Permet de définir de quel type sera l'icone
+                let icon;
+                if (station.available_bikes === 0) {
+                    icon = map.icons.redBike.icon;
+                } else {
+                    icon = map.icons.greenBike.icon;
+                }
+
+                // Ajoute un Marker pour chaque station avec son icon
+                map.addMarkers(station.position, icon);
 
                 // Récupère les infos de la station au click sur le marker
                 map.clickMarkers(station);

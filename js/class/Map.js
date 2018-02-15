@@ -6,6 +6,16 @@ class Map {
         this.lat = 45.750000;
         this.lng = 4.850000;
 
+        // Icon
+        this.icons = {
+          greenBike: {
+            icon: '../../img/icons/greenBike.png'
+          },
+          redBike: {
+            icon: '../../img/icons/redBike.png'
+          }
+        }
+
         this.map = null;
         this.markers = null;
         this.markerCluster = null;
@@ -241,10 +251,11 @@ class Map {
 
 
     // Ajoute les Markers à la Map
-    addMarkers(coords) {
+    addMarkers(coords, icons) {
         this.markers = new google.maps.Marker({
             position: coords,
-            map: this.map
+            map: this.map,
+            icon: icons
         });
 
         this.markersArr.push(this.markers);

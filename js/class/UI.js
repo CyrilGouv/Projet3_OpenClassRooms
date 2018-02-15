@@ -101,7 +101,7 @@ class UI {
     }
 
 
-    // Gère la signature
+    // Gère la signature Mouse
     drawSign(e) {
         if (!this.isDrawing) return;
 
@@ -129,6 +129,28 @@ class UI {
                 e.target.style.backgroundColor = '#71A466';
             });
 
+        } else if (e.touches[0]) {
+            let touches = e.touches[0];
+        
+            this.ctx.beginPath();
+            // Start From
+            this.ctx.moveTo(this.lastX, this.lastY);
+            // Go To
+            this.ctx.lineTo(touches.clientX - touches.target.offsetLeft, touches.clientY - touches.target.offsetTop);
+            this.ctx.stroke();
+            [this.lastX, this.lastY] = [touches.clientX - touches.target.offsetLeft, touches.clientY - touches.target.offsetTop];
+            console.log(touches.clientX);
+
+            // On réactive ainsi notre bouton j'accepte
+            jeReserve.disabled = false;
+            jeReserve.style.opacity = '1';
+            jeReserve.style.cursor = 'pointer';
+            jeReserve.addEventListener('mouseenter', (e) => {
+                e.target.style.backgroundColor = '#3C6E65';
+            });
+            jeReserve.addEventListener('mouseleave', (e) => {
+                e.target.style.backgroundColor = '#71A466';
+            });
         }
     }
 

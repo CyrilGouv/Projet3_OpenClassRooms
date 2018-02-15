@@ -103,6 +103,26 @@
             color: $blue;
             font-weight: 700;
         }
+
+        .cancelBike {
+            padding: .55rem 1rem;
+            background-color: $mediumGreen;
+            border: 2px solid $mediumGreen;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+
+            font-size: 1rem;
+            text-decoration: none;
+            color: $white;
+            font-weight: 700;
+            transition: .3s;
+
+            &:hover {
+                background-color: $darkGreen;
+                border: 2px solid $darkGreen;
+
+                color: $white;
+            }
+        }
     }
 
 }
