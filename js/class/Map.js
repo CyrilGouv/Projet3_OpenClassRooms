@@ -9,10 +9,10 @@ class Map {
         // Icon
         this.icons = {
           greenBike: {
-            icon: '../../img/icons/greenBike.png'
+            icon: 'img/icons/greenBike.png'
           },
           redBike: {
-            icon: '../../img/icons/redBike.png'
+            icon: 'img/icons/redBike.png'
           }
         }
 

@@ -17,7 +17,11 @@ class UI {
 
         this.infosContent = document.querySelector('.infos-content');
 
+        // Station actuelle
         this.currentStation;
+        
+        // Station actuelle enregistrer
+        this.saveBike = null;
     }
 
 
@@ -77,6 +81,20 @@ class UI {
     reservationClick(target) {
         // Si la cible du click est bien le bouton
         if (target.classList.contains('infos-content-reservation')) {
+
+            const infosText = document.querySelector('.canvas-infos p');
+            if (this.saveBike !== null || storageData.station !== undefined) {
+                infosText.innerHTML = `
+                    Vous avez déjà une réservation en cours!<br>
+                    Êtes-vous sûr de vouloir procéder à cette nouvelle réservation ?
+                `;
+            } else {
+                infosText.innerHTML = `
+                    Merci de signer dans le cadre ci-dessous pour que la réservation soit bien établie.
+                `;
+            }
+
+
             // On crée un overlay d'arrière plan
             const overlay = document.createElement('div');
             overlay.className = 'overlay';
@@ -136,10 +154,9 @@ class UI {
             // Start From
             this.ctx.moveTo(this.lastX, this.lastY);
             // Go To
-            this.ctx.lineTo(touches.clientX - touches.target.offsetLeft, touches.clientY - touches.target.offsetTop);
+            this.ctx.lineTo(touches.pageX - touches.target.offsetLeft - this.modal.offsetLeft, touches.pageY - touches.target.offsetTop - this.modal.offsetTop);
             this.ctx.stroke();
-            [this.lastX, this.lastY] = [touches.clientX - touches.target.offsetLeft, touches.clientY - touches.target.offsetTop];
-            console.log(touches.clientX);
+            [this.lastX, this.lastY] = [touches.pageX - touches.target.offsetLeft - this.modal.offsetLeft, touches.pageY - touches.target.offsetTop - this.modal.offsetTop];
 
             // On réactive ainsi notre bouton j'accepte
             jeReserve.disabled = false;
@@ -174,14 +191,27 @@ class UI {
 
     // Gère la réservation
     acceptSign() {
-        this.flashMessage('Merci, nous avons bien pris en compte la réservation de votre velov!', 'success')
+        if (storageData.timer !== undefined) {
+            this.flashMessage('Merci, nous avons bien pris en compte votre nouvelle réservation!', 'success')
 
-        // On lance le compte à rebours
-        this.timeUp = 0;
-        this.countDown();
+            storage.setData(this.currentStation, new Date().getTime() + 1200000);
+            this.countDown();
+            window.location.reload();
+        } else {
+            this.flashMessage('Merci, nous avons bien pris en compte la réservation de votre velov!', 'success')
 
-        // On enregistre les infos dans le Session Storage
-        storage.setData(this.currentStation, this.timeUp);
+            // Si une réservation a été effectué on enregistre la station dans saveBike
+            this.saveBike = this.currentStation;
+
+            // On lance le compte à rebours
+            this.timeUp = 0;
+            this.countDown();
+
+            // On enregistre les infos dans le Session Storage
+            storage.setData(this.saveBike, this.timeUp);
+        }
+        
+
 
         this.infosContent.innerHTML = `
             <p>Veuillez selectionner une station.</p>
@@ -191,10 +221,10 @@ class UI {
 
     // Gère le compte à rebours
     countDown() {
-        if (storageData.timer) {
+        if (storageData.timer !== undefined) {
             this.timeUp = storageData.timer;
         } else {
-            this.timeUp = new Date().getTime() + 1200000;
+            this.timeUp = new Date().getTime() + 1200000; //20mn = 1,2E+6 ms 
         }
 
         let countDownCtrl = setInterval(() => {
@@ -208,7 +238,7 @@ class UI {
 
             if (timer > 0) {
                 document.querySelector('.rent-confirmation').innerHTML = `
-                    <p>Vous avez 1 vélo réservé à la station ${this.currentStation ? this.currentStation : storageData.station} pour ${minutes} mn ${seconds} s</p>
+                    <p>Vous avez 1 vélo réservé à la station ${this.saveBike ? this.saveBike : storageData.station} pour ${minutes} mn ${seconds} s</p>
                     <a href="" class="cancelBike">Annuler votre réservation</a>
                 `;
                 
@@ -216,6 +246,8 @@ class UI {
                 document.querySelector('.rent-confirmation').innerHTML = `
                     <p>Vous n'avez aucune réservation d'enregistrer actuellement.</p>
                 `;
+
+                clearTimeout(countDownCtrl);
 
                 // On Supprime les données enregistrer dans le Session Storage
                 storage.removeData();
@@ -273,6 +305,7 @@ class UI {
             storage.removeData();
 
             this.timeUp = 0;
+            this.saveBike = null;
         }
     }
 }

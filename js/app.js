@@ -1,7 +1,7 @@
 /* ---> INIT OBJECTS <--- */
 // Init Storage Object
 const storage = new Storage;
-const storageData = storage.getData();
+let storageData = storage.getData();
 
 // Init Map Object
 const map = new Map;
@@ -17,6 +17,7 @@ const ui = new UI;
 
 /* ---> VARS <--- */
 const infosContent = document.querySelector('.infos-content');
+const modal = document.querySelector('.canvas');
 const signature = document.querySelector('.canvas-sign');
 const cancelSignature = document.querySelector('.canvas-cta-cancel');
 const acceptSignature = document.querySelector('.canvas-cta-accept');
@@ -44,8 +45,7 @@ signature.addEventListener('touchstart', (e) => {
 
     ui.isDrawing = true;
     let touches = e.touches[0];
-    [ui.lastX, ui.lastY] = [touches.clientX - touches.target.offsetLeft, touches.clientY - touches.target.offsetTop];
-    
+    [ui.lastX, ui.lastY] = [touches.pageX - touches.target.offsetLeft - modal.offsetLeft, touches.pageY - touches.target.offsetTop - modal.offsetTop];
 })
 signature.addEventListener('touchmove', (e) => ui.drawSign(e));
 signature.addEventListener('touchend', () => ui.isDrawing = false);
